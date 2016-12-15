@@ -1,25 +1,37 @@
 #NoEnv
+#UseHook
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 #InstallKeybdHook
 SendLevel, 1
 #InputLevel, 1
 
+UnignoreGarbage()
+
+!NumpadLeft::
+!NumpadRight::
+return
 
 NumpadPgUp::
-!NumpadLeft::
+NumpadLeft::
+!NumpadLeft UP::
 Browser_Back::
+	IgnoreGarbage()
 	SendInput {LWin down}{RCtrl down}{Right}
-	Sleep 100
 	SendInput {RCtrl up}{LWin up}
+;	Sleep 1000
+	UnignoreGarbage()
 	return
 
 NumpadPgDn::
-!NumpadRight::
+NumpadRight::
+!NumpadRight UP::
 Browser_Forward::
+	IgnoreGarbage()
 	SendInput {LWin down}{RCtrl down}{Left}
-	Sleep 100
 	SendInput {RCtrl up}{LWin up}
+;	Sleep 1000	
+	UnignoreGarbage()
 	return
 
 #InputLevel 0
@@ -30,3 +42,16 @@ WinTab() {
 	Send {RWin down}{Tab}{RWin up}
 	return
 }
+
+IgnoreGarbage() {
+	;Hotkey, LControl, on
+	;Hotkey, LControl up, on
+}
+
+UnignoreGarbage() {
+	;Hotkey, LControl, off
+	;Hotkey, LControl up, off
+}
+;LControl::
+;LControl up::
+; return
