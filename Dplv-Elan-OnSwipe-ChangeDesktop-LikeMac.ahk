@@ -6,32 +6,32 @@ SetWorkingDir %A_ScriptDir%
 SendLevel, 1
 #InputLevel, 1
 
-UnignoreGarbage()
-
-!NumpadLeft::
-!NumpadRight::
-return
-
 NumpadPgUp::
 NumpadLeft::
 !NumpadLeft UP::
 Browser_Back::
-	IgnoreGarbage()
-	SendInput {LWin down}{RCtrl down}{Right}
-	SendInput {RCtrl up}{LWin up}
-;	Sleep 1000
-	UnignoreGarbage()
+	SetTimer, SwipeRight,-50
+	return
+
+SwipeRight:
+;	SendInput {LWin down}{RCtrl down}{Right}{LWin up}{RCtrl up}
+    SendInput {LWin down}{RCtrl down}{Right}
+    Sleep 100
+    SendInput {RCtrl up}{LWin up}
 	return
 
 NumpadPgDn::
 NumpadRight::
 !NumpadRight UP::
 Browser_Forward::
-	IgnoreGarbage()
-	SendInput {LWin down}{RCtrl down}{Left}
-	SendInput {RCtrl up}{LWin up}
-;	Sleep 1000	
-	UnignoreGarbage()
+	SetTimer, SwipeLeft,-50
+	return
+
+SwipeLeft:
+;	SendInput {LWin down}{RCtrl down}{Left}{LWin up}{RCtrl up}
+    SendInput {LWin down}{RCtrl down}{Left}
+    Sleep 100
+    SendInput {RCtrl up}{LWin up}
 	return
 
 #InputLevel 0
@@ -42,16 +42,3 @@ WinTab() {
 	Send {RWin down}{Tab}{RWin up}
 	return
 }
-
-IgnoreGarbage() {
-	;Hotkey, LControl, on
-	;Hotkey, LControl up, on
-}
-
-UnignoreGarbage() {
-	;Hotkey, LControl, off
-	;Hotkey, LControl up, off
-}
-;LControl::
-;LControl up::
-; return
