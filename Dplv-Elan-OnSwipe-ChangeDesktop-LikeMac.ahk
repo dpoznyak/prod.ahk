@@ -16,7 +16,7 @@ Browser_Back::
 SwipeRight:
 ;	SendInput {LWin down}{RCtrl down}{Right}{LWin up}{RCtrl up}
     SendInput {LWin down}{RCtrl down}{Right}
-    Sleep 100
+    Sleep 150
     SendInput {RCtrl up}{LWin up}
 	return
 
@@ -30,7 +30,7 @@ Browser_Forward::
 SwipeLeft:
 ;	SendInput {LWin down}{RCtrl down}{Left}{LWin up}{RCtrl up}
     SendInput {LWin down}{RCtrl down}{Left}
-    Sleep 100
+    Sleep 150
     SendInput {RCtrl up}{LWin up}
 	return
 
