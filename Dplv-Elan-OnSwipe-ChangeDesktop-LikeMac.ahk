@@ -36,9 +36,12 @@ SwipeLeft:
 
 #InputLevel 0
 
-#e::WinTab()
+#f::WinTab()
 
 WinTab() {
-	Send {RWin down}{Tab}{RWin up}
+;	SendInput {LWin down}{Tab}
+;    Sleep 150	
+;	SendInput {LWin up}
+	RunWait, TaskView\TaskView.exe
 	return
 }
