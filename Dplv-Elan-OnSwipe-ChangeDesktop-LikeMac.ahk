@@ -37,6 +37,7 @@ SwipeLeft:
 #InputLevel 0
 
 #f::WinTab()
+#e::WinTab()
 
 WinTab() {
 ;	SendInput {LWin down}{Tab}
