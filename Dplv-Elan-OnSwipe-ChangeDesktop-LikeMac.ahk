@@ -6,6 +6,9 @@ SetWorkingDir %A_ScriptDir%
 SendLevel, 1
 #InputLevel, 1
 
+EventHandle := CreateEvent("zz.ahk-helpers.taskview.toggle")
+
+
 NumpadPgUp::
 NumpadLeft::
 !NumpadLeft UP::
@@ -39,10 +42,43 @@ SwipeLeft:
 #f::WinTab()
 #e::WinTab()
 
+
+
 WinTab() {
-;	SendInput {LWin down}{Tab}
-;    Sleep 150	
-;	SendInput {LWin up}
-	RunWait, TaskView\TaskView.exe
+	global EventHandle
+	SetEvent(EventHandle)
 	return
+}
+
+; HANDLE WINAPI CreateEvent(
+;  _In_opt_ LPSECURITY_ATTRIBUTES lpEventAttributes,
+;  _In_     BOOL                  bManualReset,
+;  _In_     BOOL                  bInitialState,
+;  _In_opt_ LPCTSTR               lpName
+;);
+
+GetLastError() {
+        return DllCall("kernel32.dll\GetLastError")
+}
+
+CreateEvent(Name)
+{
+    r := DllCall("kernel32.dll\CreateEventW", "Ptr", 0, "Int", 0, "Int", 0, "WStr", Name)
+	OutputDebug, CreateEvent handle: %r%
+	if (r == 0)  {
+		OutputDebug, Failed to CreateEvent %A_LastError% 	
+		throw ;
+	}
+	return r
+}
+
+;BOOL WINAPI SetEvent(
+;  _In_ HANDLE hEvent
+;);
+
+SetEvent(Handle) {
+	if (!DllCall("kernel32.dll\SetEvent", "Ptr", Handle)) {
+		OutputDebug, Failed to SetEvent %A_LastError% 	 (h=%Handle%)
+		throw ;
+	}
 }
