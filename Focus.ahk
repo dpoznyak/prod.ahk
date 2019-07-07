@@ -2,20 +2,39 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 #InstallKeybdHook
 
+CachedTargetWindow := 0
+
 ActivateChromeTab(url) {
-    if WinExist("ahk_exe Chrome.exe") {
-        if not WinActive() {
+
+    ; b := WinExist ahk_id %CachedTargetWindow%
+    ; if not b 
+    ; {
+        b := WinExist("ahk_exe Chrome.exe")
+    ; }
+
+    if b 
+    {
+        if not WinActive() 
+        {
             WinActivate
-;            WinWaitActive
+            WinWaitActive
         }
         Saved := Clipboard
         Clipboard := url
-        Send, !d
-        Send, ^v
+        SendEvent, !d
+        SendEvent, ^v
         SendEvent, {Tab}{Space}{Esc} 
         Clipboard := Saved
+
+        ; if CachedTargetWindow == 0 
+        ; {
+        ;     CachedTargetWindow := WinGet, A
+        ;     MsgBox, %CachedTargetWindow%
+        ; }
     }
 }
 
++F3::ActivateChromeTab("https://www.mindmeister.com/1025516572")
 #F3::ActivateChromeTab("https://www.mindmeister.com/1025516572")
-#F4::ActivateChromeTab("https://kanban.mgenta.biz/b/jJy2B52PXc4npo6rc/dk?focus=me_us")
++F4::ActivateChromeTab("https://kanban.mgenta.biz/b/jJy2B52PXc4npo6rc/dk")
+#F4::ActivateChromeTab("https://kanban.mgenta.biz/b/jJy2B52PXc4npo6rc/dk")
