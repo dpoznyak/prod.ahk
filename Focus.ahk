@@ -18,7 +18,13 @@ SaveTargetWindow()
     MsgBox, % "Saved target window: " . CachedTargetWindow
 }
 
-#F12::SaveTargetWindow()
+#F12::SaveTargetWindow()    
 
-#F3::ActivateChromeTab("1")
+#F3::
+    SetTitleMatchMode 2
+    If WinExist("OneNote ahk_class ApplicationFrameWindow", "OneNote")
+        WinActivate
+return
+
+#+F3::ActivateChromeTab("1")
 #F4::ActivateChromeTab("2")
