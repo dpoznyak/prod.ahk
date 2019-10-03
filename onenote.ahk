@@ -10,16 +10,17 @@ Reset() {
 
 #IfWinActive OneNote ahk_class ApplicationFrameWindow
 F1::Reset()
-F2::Send, ^4
 F4::
     Reset()
     Send, ^1^4
 return
+F5::Send, ^4
 +F4::
     Reset()
-    Send, ^6^a^+<^i^-{End}
+    Send, ^6{End}^a^i^-^+<{End}
 return
 +F5::
     Reset()
-    Send, ^1^1^a^+<^i{End}
+    Send, ^1^1{End}^a^i^+<{End}
 return
+^p::SendEvent, ^e{tab}{Down}{down}+{tab}
