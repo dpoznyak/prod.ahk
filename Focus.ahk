@@ -26,5 +26,5 @@ SaveTargetWindow()
         WinActivate
 return
 
-#+F3::ActivateChromeTab("1")
-#F4::ActivateChromeTab("2")
+; #+F3::ActivateChromeTab("1")
+#F4::ActivateChromeTab("1")
