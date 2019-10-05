@@ -23,4 +23,14 @@ return
     Reset()
     Send, ^1^1{End}^a^i^+<{End}
 return
-^p::SendEvent, ^e{tab}{Down}{down}+{tab}
+^p::
+    Send, ^e
+    Send, {Blind}{ctrl UP}
+    Sleep, 300
+    Send, {tab}{Down}{down}+{tab}
+return
+^+e::
+    Send, ^+g
+    ;Sleep, 300
+    ;SendEvent, {tab}{tab}
+return
