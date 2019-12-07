@@ -23,6 +23,16 @@ return
     Reset()
     Send, ^1^1{End}^a^i^+<{End}
 return
+
+F6::
+    Reset()
+    Send, {Home}{U+2B55}^1^4
+return
++F6::
+    Reset()
+    Send, {Home}{U+2757}^1^4
+return
+ 
 ^p::
     Send, ^e
     Send, {Blind}{ctrl UP}
