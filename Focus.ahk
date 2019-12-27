@@ -23,8 +23,8 @@ SaveTargetWindow()
 global CachedOneNoteWindow := 0
 
 #F3::
-    OutputDebug, % "CachedOneNoteWindow is " . %CachedOneNoteWindow%
-    if !(CachedOneNoteWindow > 0)
+    OutputDebug, % "CachedOneNoteWindow is " . CachedOneNoteWindow
+    if (!(CachedOneNoteWindow > 0)) || (!(WinExist("ahk_id " . CachedOneNoteWindow)))
     {
     
         SetTitleMatchMode 2
