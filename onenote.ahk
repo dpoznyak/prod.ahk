@@ -1,9 +1,10 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
+#Warn  ; Enable warnings to assist with detecting common errors.
+
 #InstallKeybdHook
 
 SetTitleMatchMode 2
-SendMode, Input
+SendMode, Event
 Reset() {
     Send, ^0^+n
 }
@@ -17,13 +18,18 @@ return
 F5::Send, ^4
 +F4::
     Reset()
-    Send, ^6{End}^a^i^-^+<{End}
+    Send, ^6{Home}+{End}^i^-^+<{End}
 return
 +F5::
     Reset()
-    Send, ^1^1{End}^a^i^+<{End}
+    Send, ^1^1{Home}+{End}^i^+<{End}
 return
 
+
+F3::
+    Reset()
+    Send, {Home}{U+270F}^1^4
+return
 F6::
     Reset()
     Send, {Home}{U+2B55}^1^4
