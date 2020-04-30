@@ -18,25 +18,27 @@ return
 F5::Send, ^4
 +F4::
     Reset()
-    Send, ^6{Home}+{End}^i^-^+<{End}
+    Send, ^6{Home}+{End}^{i}^-^+{sc33}{End}
 return
 +F5::
     Reset()
-    Send, ^1^1{Home}+{End}^i^+<{End}
+    Send, ^1^1{Home}+{End}^i^+{sc33}{End}
 return
 
 
 F3::
     Reset()
-    Send, {Home}{U+270F}^1^4
+    Send, ^1^4{Home}{U+270F}
 return
 F6::
+F12::
     Reset()
-    Send, {Home}{U+2B55}^1^4
+    Send, ^1^4{Home}{U+2B55}
 return
 +F6::
++F12::
     Reset()
-    Send, {Home}{U+2757}^1^4
+    Send, ^1^4{Home}{U+2757}
 return
  
 ^p::
@@ -49,4 +51,8 @@ return
     Send, ^+g
     ;Sleep, 300
     ;SendEvent, {tab}{tab}
+return
+
+^Tab::
+    ; ignore control tab instead of creating new section in mistake
 return
