@@ -30,6 +30,11 @@ F3::
     Reset()
     Send, ^1^4{Home}{U+270F}
 return
++F3::
+    Reset()
+    Send, ^1^4{Home}{U+1F4AD}
+return
+
 F6::
 F12::
     Reset()
@@ -44,8 +49,20 @@ return
 ^p::
     Send, ^e
     Send, {Blind}{ctrl UP}
-    Sleep, 300
-    Send, {tab}{Down}{down}+{tab}
+    Sleep,300
+    SendEvent, {tab}{Down}{down}+{tab}
+return
+    ; InputBox, UserInput, Phone Number, Please enter a phone number., , , 
+    ; if not ErrorLevel
+    ;     Send, "%UserInput%"
+        ;MsgBox, You entered "%UserInput%"
+^Enter::
+    Send, {esc}
+    Sleep,100
+    Send, {home}{"}{end}{"}
+    Send, {Blind}{ctrl UP}
+    Sleep,100
+    Send, {enter}
 return
 ^+e::
     Send, ^+g
